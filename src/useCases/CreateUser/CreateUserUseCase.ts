@@ -1,7 +1,7 @@
 import { User } from "../../entities/User";
 import { IMailProvider } from "../../providers/IMailProvider";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
-import { ICreaseUserRequestDTO } from "./CreateUserDTO";
+import { ICreateUserRequestDTO } from "./CreateUserDTO";
 
 export class CreateUserUseCase {
 
@@ -10,7 +10,7 @@ export class CreateUserUseCase {
         private mailProvider: IMailProvider,
     ) {}
 
-    async execute(data: ICreaseUserRequestDTO) {
+    async execute(data: ICreateUserRequestDTO) {
         const userAlreadyExists = await this.usersRepository.findByEmail(data.email);
 
         if (userAlreadyExists) {
